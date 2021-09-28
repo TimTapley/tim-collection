@@ -3,11 +3,13 @@
 //connect to database
 $db = new PDO('mysql:host=db; dbname=tim-collection', 'root', 'password');
 
+//set fetch attribute to create resulting fetch as an associative array
+$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
 //prepare statement to fetch player information and ratings from database
 $query = $db->prepare("SELECT `id`,`title`, `author`, `covertype`, `published`, `condition`, `signed`,`image` FROM `first-editions`;");
 
-//set fetch attribute to create resulting fetch as an associative array
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
 
 //execute fetch to import data from database
 $query->execute();
