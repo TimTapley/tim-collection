@@ -19,9 +19,9 @@ function getDB() : PDO {
  * @param $db input parameter for function
  * @return array
  *
- * retrieves data nad creates an array captured in $query
+ * retrieves data and creates an array captured in $query
  */
-function retrieveBooks($db) : array {
+function retrieveBooks( PDO $db) : array {
     $query = $db->prepare("SELECT `id`,`title`, `author`, `covertype`, `published`, `condition`, `signed`,`image` FROM `first-editions`;");
     $query->execute();
     return $query->fetchAll();
@@ -43,8 +43,7 @@ function displayBooks(array $firstEditions) : string {
 
     foreach ($firstEditions as $book) {
         $signed = $book["signed"] == '1'? 'Yes': 'No';
-//        $displayString .= '<div class="book">' .
-//            $book['title'] . ' ' . $book['author'] . ' ' . $book['covertype'] . ' ' . $book['published'] . ' ' . $book['condition'] . ' ' . $book['signed'] . ' ' . $book['image'] . '</div>';
+
         $displayString .= '<article class="item">';
         $displayString .= '<div class="book">';
         $displayString .= '<img src="images/' . $book['image'] . '" alt="a picture of ' . $book['title'] . ' book cover" />';

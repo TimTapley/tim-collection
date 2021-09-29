@@ -35,6 +35,15 @@ class Functions extends TestCase {
 
         $this->assertEquals($expected, $result);
 }
+
+    public function testMalformedDisplayBooks() {
+
+        $input = [5];
+
+        $this->expectException(TypeError::class);
+
+        displayBooks($input);
+    }
 }
 
 

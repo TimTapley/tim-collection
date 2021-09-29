@@ -23,7 +23,6 @@ $result = displayBooks($firstEditions);
   <body>
     <nav class="wide-nav">
       <a href="#">Home</a>
-      <input class="search" type="text" placeholder="Search..">
     </nav>
 
     <header>
