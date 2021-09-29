@@ -11,7 +11,6 @@ body {
 
 nav {
     display: flex;
-    justify-content: space-around;
     padding: 10px;
     margin-left: 5%;
     margin-right: 5%;
@@ -27,11 +26,6 @@ nav a {
     padding: 3px;
     text-decoration: none;
     color: #734D3F
-}
-
-.search {
-    border: 2px solid #734D3F;
-    border-radius: 5px;
 }
 
 header {
