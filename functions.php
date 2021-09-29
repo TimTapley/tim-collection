@@ -1,7 +1,11 @@
 <?php
 
-/**creates path to database and sets attributes for data retrieval
- * @return PDO
+/**
+ * creates path to database and sets fetch attributes for data retrieval
+ *
+ * @return PDO sets fetch attributes
+ *
+ * saves function output to $db
  */
 function getDB() : PDO {
     $db = new PDO('mysql:host=db; dbname=tim-collection', 'root', 'password');
@@ -9,13 +13,32 @@ function getDB() : PDO {
     return $db;
 }
 
+/**
+ * creates fetch query to retrieve data from database
+ *
+ * @param $db input parameter for function
+ * @return array
+ *
+ * retrieves data nad creates an array captured in $query
+ */
 function retrieveBooks($db) : array {
     $query = $db->prepare("SELECT `id`,`title`, `author`, `covertype`, `published`, `condition`, `signed`,`image` FROM `first-editions`;");
     $query->execute();
     return $query->fetchAll();
 }
 
+/**
+ * accesses data captured in $query array and concatenates into a string to be used with html
+ *
+ * @param array $firstEditions input parameter
+ * @return string ordered string of data to be used with html
+ *
+ * displays output string which is placed in structured html
+ */
 function displayBooks(array $firstEditions) : string {
+    if(!count($firstEditions)) {
+        return 'Input error';
+    }
     $displayString= '';
 
     foreach ($firstEditions as $book) {
