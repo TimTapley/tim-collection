@@ -72,6 +72,7 @@
           </div>
 
           <input type="submit" value="Submit">
+          <h4>Refresh page to clear form</h4>
           <div class="return-home">
               <h4><a href="index.php?message=1">Return to home page</a></h4>
           </div>
