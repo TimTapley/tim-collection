@@ -42,7 +42,7 @@ function displayBooks(array $firstEditions) : string {
     $displayString= '';
 
     foreach ($firstEditions as $book) {
-        $signed = $book["signed"] == '1'? 'Yes': 'No';
+        $signed = $book["signed"] == '1' ? 'Yes': 'No';
 
         $displayString .= '<article class="item">';
         $displayString .= '<div class="book">';
@@ -60,4 +60,40 @@ function displayBooks(array $firstEditions) : string {
     }
 
     return $displayString;
+}
+
+/**
+ * uses filter_var to cleanse data input and create an array of data entered
+ *
+ * @param array $formInput input parameter for cleanseData function
+ * @return array|string[] verifies if string is returned and informs user if incorrect
+ */
+function cleanseData(array $formInput) : array {
+    $dataEntered = [];
+    foreach($formInput as $bookInfo){
+        if(!is_string($bookInfo)){
+            return ['Please check input and try again'];
+        }
+    }
+
+    foreach($formInput as $data){
+        $dataEntered[] .= htmlspecialchars($data, FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+
+    return $dataEntered;
+}
+
+/**
+ * prepares data for insert into database
+ *
+ * @param string $postTitle
+ * @param string $postAuthor
+ * @param string $postCoverType
+ * @param int $postPublished
+ * @param string $postCondition
+ * @param int $postSigned
+ * @param string $postImage
+ */
+function prepareData(string $postTitle, string $postAuthor, string $postCoverType, int $postPublished, string $postCondition, int $postSigned, string $postImage)  {
+
 }
