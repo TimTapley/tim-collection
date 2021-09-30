@@ -42,13 +42,11 @@ function displayBooks(array $firstEditions) : string {
     $displayString= '';
 
     foreach ($firstEditions as $book) {
-        $signed = $book["signed"] == '1'? 'Yes': 'No';
+        $signed = $book["signed"] == '1' ? 'Yes': 'No';
 
         $displayString .= '<article class="item">';
         $displayString .= '<div class="book">';
         $displayString .= '<img src="images/' . $book['image'] . '" alt="a picture of ' . $book['title'] . ' book cover" />';
-
-
         $displayString .= '<h1>' . $book["title"] . '</h1>';
         $displayString .= '</div>';
         $displayString .= '<div>';
@@ -74,12 +72,12 @@ function cleanseData(array $formInput) : array {
     $dataEntered = [];
     foreach($formInput as $bookInfo){
         if(!is_string($bookInfo)){
-            return ['Incorrect input'];
+            return ['Please check input and try again'];
         }
     }
 
     foreach($formInput as $data){
-        $dataEntered[] .= filter_var($data, FILTER_SANITIZE_SPECIAL_CHARS);
+        $dataEntered[] .= htmlspecialchars($data, FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
     return $dataEntered;

@@ -38,11 +38,42 @@ class Functions extends TestCase {
 
     public function testMalformedDisplayBooks() {
 
-        $input = [5];
+        $input = 5;
 
         $this->expectException(TypeError::class);
 
         displayBooks($input);
+    }
+
+    public function testSuccessCleanseData() {
+
+        $expected = ['&amp;','&quot;','&lt;','&gt;'];
+
+        $input = ['&','"','<','>'];
+
+        $result = cleanseData($input);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testFailureCleanseData() {
+
+        $expected = ['Please check input and try again'];
+
+        $input = [['percnt' => '%'], ['dollar' => '$']];
+
+        $result = cleanseData($input);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testMalformedCleanseData() {
+
+        $input = 5;
+
+        $this->expectException(TypeError::class);
+
+        cleanseData($input);
     }
 }
 
