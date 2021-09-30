@@ -23,6 +23,7 @@ $result = displayBooks($firstEditions);
   <body>
     <nav class="wide-nav">
       <a href="#">Home</a>
+      <a href="form.php?message=1">To add new first editions click here</a>
     </nav>
 
     <header>

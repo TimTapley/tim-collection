@@ -36,9 +36,14 @@
             <input type="text" id="author" name="author" maxlength="255"  /><br><br>
           </div>
 
+          <div>
+              <label for="published" >Year published:</label>
+              <input type="number" id="published" name="published" maxlength="4" min="0000" max="9999" /><br><br>
+          </div>
+
           <div class="covertype">
             <label for="covertype" >Cover Type:</label>
-            <input list="covertypes" id="covertype" name="covertype" maxlength="255"  /><br><br>
+            <input type="text" list="covertypes" id="covertype" name="covertype" maxlength="255"  /><br><br>
               <datalist id="covertypes">
                 <option value="hardback"></option>
                 <option value="softback"></option>
@@ -46,13 +51,8 @@
           </div>
 
           <div>
-            <label for="published" >Year published:</label>
-            <input type="text" id="published" name="published" maxlength="4"  /><br><br>
-          </div>
-
-          <div>
             <label for="condition" >Condition:</label>
-            <input list="conditions" id="condition" name="condition" maxlength="255"  /><br><br>
+            <input type="text" list="conditions" id="condition" name="condition" maxlength="255"  /><br><br>
               <datalist id="conditions">
                   <option value="mint"></option>
                   <option value="good"></option>
@@ -72,7 +72,13 @@
           </div>
 
           <input type="submit" value="Submit">
+          <div class="return-home">
+              <h4><a href="index.php?message=1">Return to home page</a></h4>
+          </div>
+
       </form>
+
+<!--
     </section>
 
 

@@ -11,21 +11,24 @@ body {
 
 nav {
     display: flex;
-    padding: 10px;
+    justify-content:space-around;
+    margin: 10px;
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 5px;
+    margin-top: 10px;
     position: static;
     background-color: #f5deb3;
     font-size: 22px;
+    max-width: 90%;
 }
 
 nav a {
     border: 2px solid #734D3F;
     border-radius: 5px;
-    padding: 3px;
+    padding: 0 3px;
+    margin: 10px;
     text-decoration: none;
-    color: #734D3F
+    color: #734D3F;
 }
 
 header {
@@ -96,6 +99,11 @@ footer {
     background-color: #f5deb3;
     max-width: 90%;
     padding: 5%;
+}
+
+.return-home h4 {
+    text-decoration: none;
+    color: #734D3F;
 }
 
 
