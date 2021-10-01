@@ -20,26 +20,37 @@ nav {
     background-color: #f5deb3;
     font-size: 22px;
     max-width: 90%;
+    height: 70px;
 }
 
 nav a {
     border: 2px solid #734D3F;
     border-radius: 5px;
     padding: 0 3px;
-    margin: 10px;
+    margin: 20px;
     text-decoration: none;
     color: #734D3F;
 }
 
 header {
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
     border: 3px solid #734D3F;
     max-width: 90%;
     margin-left: 5%;
     margin-bottom: 10px;
     border-radius: 10%;
     background-color: #f5deb3;
+}
+
+.form-nav a {
+    border: 2px solid #734D3F;
+    border-radius: 5px;
+    padding: 0 3px;
+    margin: 25px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #734D3F;
 }
 
 .container {

@@ -20,7 +20,8 @@
   </head>
   <body>
 
-    <header>
+    <header class="form-nav">
+      <a href="index.php">Home</a>
       <h1>My Collection of First Edition Books</h1>
     </header>
     <section class="new-books">
@@ -73,22 +74,10 @@
 
           <input type="submit" value="Submit">
           <h4>Refresh page to clear form</h4>
-          <div class="return-home">
-              <h4><a href="index.php?message=1">Return to home page</a></h4>
-          </div>
-
       </form>
 
-<!--
     </section>
 
-
-
-
-
-
-
-
-
-
   </body>
+
+</html>
