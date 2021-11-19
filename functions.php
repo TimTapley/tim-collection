@@ -62,38 +62,33 @@ function displayBooks(array $firstEditions) : string {
     return $displayString;
 }
 
-/**
- * uses filter_var to cleanse data input and create an array of data entered
- *
- * @param array $formInput input parameter for cleanseData function
- * @return array|string[] verifies if string is returned and informs user if incorrect
- */
-function cleanseData(array $formInput) : array {
-    $dataEntered = [];
-    foreach($formInput as $bookInfo){
-        if(!is_string($bookInfo)){
-            return ['Please check input and try again'];
-        }
-    }
-
-    foreach($formInput as $data){
-        $dataEntered[] .= htmlspecialchars($data, FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-
-    return $dataEntered;
-}
 
 /**
- * prepares data for insert into database
- *
- * @param string $postTitle
- * @param string $postAuthor
- * @param string $postCoverType
- * @param int $postPublished
- * @param string $postCondition
- * @param int $postSigned
- * @param string $postImage
+ * Cleanses user input by converting special characters using filter_var()
+ * @param array $postItems the $_POST superglobal that has been populated by user input
+ * @return array the new array populated by cleansed user input
  */
-function prepareData(string $postTitle, string $postAuthor, string $postCoverType, int $postPublished, string $postCondition, int $postSigned, string $postImage)  {
+function cleanseData(array $postItems) : array {
+    if (!count($postItems)) {
+        return 'Input error. Array doesn\'t exist.';
+    }
+    $cleansedArr = [];
+    foreach($postItems as $postItem){
+        $cleansedArr[] .= htmlspecialchars($postItem, FILTER_SANITIZE_SPECIAL_CHARS);
+    }
 
+    return $cleansedArr;
 }
+
+function dbInsertion($db, array $cleansedArr) {
+
+    $query = $db->prepare("INSERT INTO `first-editions` (`title`, `author`, `published`, `covertype`,  `condition`, `signed`,`image`)
+    VALUES (:title, :author, :published, :covertype,  :condition, :signed, :image);");
+    $query->execute(['title' => $cleansedArr[0], 'author' => $cleansedArr[1], 'published' => $cleansedArr[2], 'covertype' => $cleansedArr[3],
+         'condition' => $cleansedArr[4], 'signed' => $cleansedArr[5], 'image' => $cleansedArr[6]]);
+    $query->fetchAll();
+}
+
+
+
+

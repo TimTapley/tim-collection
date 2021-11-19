@@ -2,6 +2,14 @@
 
 require_once 'functions.php';
 
+$cleansedArr = cleanseData($_POST);
+
+$db = getDB();
+
+dbInsertion($db, $cleansedArr);
+
+
+
 $bookTitle= ' ';
 $author= ' ';
 $yearPublished= ' ';
@@ -27,13 +35,17 @@ if(isset($_POST['title']) && isset($_POST['author']) && isset($_POST['published'
     $condition = $_POST['condition'];
     $signed = $_POST['signed'];
     $image = $_POST['image'];
+
+
 } else {
     echo 'Item name is too long or year entered is incorrect format';
     return $_POST = NULL;
 }
 
-    $dataOutput = cleanseData($_POST);
 
-var_dump($dataOutput);
+
+
+
+
 
 ?>

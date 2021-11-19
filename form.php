@@ -4,7 +4,6 @@
 
 
 
-
 ?>
 
 
@@ -18,12 +17,14 @@
     <link rel="stylesheet" href="normalize.css" type="text/css" />
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
+
   <body>
 
     <header class="form-nav">
       <a href="index.php">Home</a>
       <h1>My Collection of First Edition Books</h1>
     </header>
+
     <section class="new-books">
       <form method="post" action="output.php">
         <h3>New first editions to be added to collection</h3><br>
