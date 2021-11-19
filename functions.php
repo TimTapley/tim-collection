@@ -42,7 +42,7 @@ function displayBooks(array $firstEditions) : string {
     $displayString= '';
 
     foreach ($firstEditions as $book) {
-        $signed = $book["signed"] == '1'? 'Yes': 'No';
+        $signed = $book["signed"] == '1' ? 'Yes': 'No';
 
         $displayString .= '<article class="item">';
         $displayString .= '<div class="book">';
@@ -61,3 +61,34 @@ function displayBooks(array $firstEditions) : string {
 
     return $displayString;
 }
+
+
+/**
+ * Cleanses user input by converting special characters using filter_var()
+ * @param array $postItems the $_POST superglobal that has been populated by user input
+ * @return array the new array populated by cleansed user input
+ */
+function cleanseData(array $postItems) : array {
+    if (!count($postItems)) {
+        return 'Input error. Array doesn\'t exist.';
+    }
+    $cleansedArr = [];
+    foreach($postItems as $postItem){
+        $cleansedArr[] .= htmlspecialchars($postItem, FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+
+    return $cleansedArr;
+}
+
+function dbInsertion($db, array $cleansedArr) {
+
+    $query = $db->prepare("INSERT INTO `first-editions` (`title`, `author`, `published`, `covertype`,  `condition`, `signed`,`image`)
+    VALUES (:title, :author, :published, :covertype,  :condition, :signed, :image);");
+    $query->execute(['title' => $cleansedArr[0], 'author' => $cleansedArr[1], 'published' => $cleansedArr[2], 'covertype' => $cleansedArr[3],
+         'condition' => $cleansedArr[4], 'signed' => $cleansedArr[5], 'image' => $cleansedArr[6]]);
+    $query->fetchAll();
+}
+
+
+
+
